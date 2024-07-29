@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FLAMES - Relation Checkup</title>
+    <style>
+        body {
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 80vh;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+        .container {
+            background-color: wheat;
+            border: 2px solid black;
+            padding: 20px;
+            width: 100%;
+            font-size: 30px;
+        }
+        input[type="text"] {
+            font-size: 30px;
+            border-color: grey;
+        }
+        .overall {
+            text-align: center;
+            width: 50%; 
+        }
+        button {
+            border: 2px solid rgb(0, 0, 0);
+            background-color: black;
+            border-radius: 10px;
+            width: 30%;
+            height: 30px;
+            font-size: 20px;
+            transition: background-color 0.3s, color 0.3s;
+            color: whitesmoke;
+        }
+        button:hover {
+            background-color: gray;
+            color: black;
+        }
+        h2 {
+            font-size: 4rem;
+            letter-spacing: 7px;
+            color: whitesmoke;
+        }
+
+@media screen and (max-width: 500px){
+    *{
+        margin: 0%;
+        padding: 0%;
+        box-sizing: border-box;
+    }
+    h2 {
+            font-size: 2rem;
+            letter-spacing: 7px;
+            color: whitesmoke;
+        }
+        button {
+            border: 2px solid rgb(0, 0, 0);
+            background-color: black;
+            border-radius: 10px;
+            width: 70%;
+            height: 30px;
+            font-size: 17px;
+            transition: background-color 0.3s, color 0.3s;
+            color: whitesmoke;
+        }
+        .overall {
+            margin-top: 35%;
+            text-align: center;
+            width: 100%; 
+            margin-left: 0%;
+        }
+        input[type="text"] {
+            font-size: 30px;
+            border-color: grey;
+            width: 90%;
+        }
+        body {
+            overflow: hidden;
+            background-color: black;
+            display: block;
+            justify-content: baseline;
+            align-items: baseline;
+            min-height: 80vh;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+        
+
+}
+    </style>
+</head>
+<body>
+    <div class="overall">
+        <h2>FLAMES</h2>
+        <div class="container">
+            <label for="yourName">Enter your name: </label>
+            <input type="text" id="yourName">
+            <br><br>
+            <label for="partnerName">Partner's name: </label>
+            <input type="text" id="partnerName">
+            <br><br>
+            <button onclick="check()">Check</button>
+            <div class="result">
+                <h3 id="show">Your relationship will be visible here</h3>
+            </div>
+            <button onclick="location.reload()">Reset</button>
+        </div>
+    </div>
+
+    <script>
+        function check() {
+            let YourName = document.getElementById('yourName').value;
+            YourName = YourName.replace(/\s+/g, '').toUpperCase();
+            let partnerName = document.getElementById('partnerName').value;
+            partnerName = partnerName.replace(/\s+/g, '').toUpperCase();
+
+            let yourArray = YourName.split('');
+            let partnerArray = partnerName.split('');
+
+            
+            for (let i = 0; i < yourArray.length; i++) {
+                for (let j = 0; j < partnerArray.length; j++) {
+                    if (yourArray[i] === partnerArray[j]) {
+                        yourArray[i] = '';
+                        partnerArray[j] = '';
+                        break;
+                    }
+                }
+            }
+
+            let updatedYourName = yourArray.join('');
+            let updatedPartnerName = partnerArray.join('');
+
+            let total = updatedYourName + updatedPartnerName;
+            let length = total.length;
+
+            const flames = ['F', 'L', 'A', 'M', 'E', 'S'];
+            let index = 0;
+
+            while (flames.length > 1) {
+                index = (index + length - 1) % flames.length;
+                flames.splice(index, 1);
+            }
+
+            
+            
+            if(flames[0]==='F'){
+                document.getElementById('show').innerHTML = `You both are Friends🤝🤝...Make your friendship more stronger`;
+            }else if(flames[0]==='L'){
+                document.getElementById('show').innerHTML = `Both are in love ❤️❤️....enjoy pandagoww`;
+            }else if(flames[0]==='A'){
+                document.getElementById('show').innerHTML = `Both are in Attraction 👀👀....Be careful guys...its just attraction😉.`;
+            }else if(flames[0]==='M'){
+                document.getElementById('show').innerHTML = `Congratulations guys.....both will marry each other 💍💍....don't forget to invite me for marriage😉`;
+            }else if(flames[0]==='E'){
+                document.getElementById('show').innerHTML = `You both are enemies...👿👿👿`;
+            }else if(flames[0]==='S'){
+                document.getElementById('show').innerHTML = `You both are siblings...👬👭`;
+            }
+        }
+    </script>
+</body>
+</html>

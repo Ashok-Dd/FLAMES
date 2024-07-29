@@ -70,7 +70,7 @@
             color: whitesmoke;
         }
         .overall {
-            margin-top: 35%;
+            margin-top: 20%;
             text-align: center;
             width: 100%; 
             margin-left: 0%;
@@ -106,9 +106,11 @@
             <input type="text" id="partnerName">
             <br><br>
             <button onclick="check()">Check</button>
+            <br>
             <div class="result">
                 <h3 id="show">Your relationship will be visible here</h3>
             </div>
+            <br>
             <button onclick="location.reload()">Reset</button>
         </div>
     </div>
@@ -119,7 +121,10 @@
             YourName = YourName.replace(/\s+/g, '').toUpperCase();
             let partnerName = document.getElementById('partnerName').value;
             partnerName = partnerName.replace(/\s+/g, '').toUpperCase();
-
+            if(YourName===null||partnerName===null || YourName===partnerName){
+                alert('check your entered names .... both seems to be not correct..');
+                location.reload();
+            }
             let yourArray = YourName.split('');
             let partnerArray = partnerName.split('');
 

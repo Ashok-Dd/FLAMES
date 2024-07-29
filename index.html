@@ -126,7 +126,7 @@
             YourName = YourName.replace(/\s+/g, '').toUpperCase();
             let partnerName = document.getElementById('partnerName').value;
             partnerName = partnerName.replace(/\s+/g, '').toUpperCase();
-            if(YourName===null||partnerName===null || YourName===partnerName){
+            if(YourName===''||partnerName==='' || YourName===partnerName){
                 alert('check your entered names .... both seems to be not correct..');
                 location.reload();
             }
